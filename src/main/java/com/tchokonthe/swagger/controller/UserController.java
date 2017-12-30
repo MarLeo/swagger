@@ -116,7 +116,7 @@ public class UserController {
         byte[] document = FileCopyUtils.copyToByteArray(file);
 
         HttpHeaders header = new HttpHeaders();
-        header.setContentType(new MediaType("application", "json"));
+        header.setContentType(new MediaType("application", "octet-stream"));
         header.set("Content-Disposition", "inline; filename=" + file.getName());
         header.setContentLength(document.length);
 
@@ -131,6 +131,4 @@ public class UserController {
         }
         return file;
     }
-
-
 }

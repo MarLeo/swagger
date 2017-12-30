@@ -95,6 +95,15 @@
 
     </dependencies>
 
+	<developers>
+		<developer>
+			<id>swagger</id>
+            <name>Martin Tchokonthe</name>
+            <email>martin.aurele12@gmail.com</email>
+            <organization>Tchokonthe's Brothers</organization>
+		</developer>
+	</developers>
+
 	<build>
 		<plugins>
 			<plugin>
