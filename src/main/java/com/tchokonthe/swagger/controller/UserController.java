@@ -5,7 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tchokonthe.swagger.error.CustomErrorType;
 import com.tchokonthe.swagger.model.User;
 import com.tchokonthe.swagger.service.UserService;
-import io.swagger.annotations.*;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.util.FileCopyUtils;
@@ -25,7 +26,7 @@ public class UserController {
     UserService userService;
 
     private static final String FILE_PATH = "/tmp/test.json";
-    private static final String APPLICATION_PDF = "application/json";
+    private static final String APPLICATION_PDF = "application/octet-stream";
 
 
     @ApiOperation(value = "Returns All Users", response = User.class)
