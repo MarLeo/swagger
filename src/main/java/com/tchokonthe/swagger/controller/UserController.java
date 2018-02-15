@@ -2,10 +2,12 @@ package com.tchokonthe.swagger.controller;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.tchokonthe.swagger.api.SwaggerAPIDownload;
 import com.tchokonthe.swagger.error.CustomErrorType;
 import com.tchokonthe.swagger.model.User;
 import com.tchokonthe.swagger.service.UserService;
-import io.swagger.annotations.*;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.util.FileCopyUtils;
@@ -24,6 +26,7 @@ public class UserController {
     @Autowired
     UserService userService;
 
+
     private static final String FILE_PATH = "/tmp/test.json";
     private static final String APPLICATION_PDF = "application/json";
 
@@ -32,15 +35,17 @@ public class UserController {
     @GetMapping("/users")
     public ResponseEntity<?> getAllUsers() {
 
-        List<User> users = userService.findAllUsers();
+        SwaggerAPIDownload api = new SwaggerAPIDownload();
+
+        List<User> users = api.getAllUsers();
 
         ObjectMapper mapper = new ObjectMapper();
 
-        try {
+        /*try {
             mapper.writerWithDefaultPrettyPrinter().writeValue(new File(FILE_PATH), users);
         } catch (IOException ioe) {
             ioe.printStackTrace();
-        }
+        }*/
 
         return users.isEmpty() ? new ResponseEntity<>(HttpStatus.NO_CONTENT)
                 : new ResponseEntity<>(users, HttpStatus.OK);
